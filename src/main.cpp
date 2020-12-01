@@ -20,6 +20,22 @@ int dim = stepsPerRevolution;
 // Set the step motor number and pin
 Stepper myStepper(stepsPerRevolution, 10, 11, 12, 13);
 
+void clockwise()
+{
+  // clockwise rotation
+  dim = stepsPerRevolution;
+  lcd.setCursor(10, 1);
+  lcd.print(">>>>>>");
+}
+
+void counterclockwise()
+{
+  // anti-clockwise
+  dim = -stepsPerRevolution;
+  lcd.setCursor(10, 1);
+  lcd.print("<<<<<<");
+}
+
 void setup()
 {
   lcd.begin(16, 2);
@@ -56,20 +72,4 @@ void loop()
     lcd.setCursor(6, 0);
     lcd.print(float(float(motorSpeed) / float(200)));
   }
-}
-
-void clockwise()
-{
-  // clockwise rotation
-  dim = stepsPerRevolution;
-  lcd.setCursor(10, 1);
-  lcd.print(">>>>>>");
-}
-
-void counterclockwise()
-{
-  // anti-clockwise
-  dim = -stepsPerRevolution;
-  lcd.setCursor(10, 1);
-  lcd.print("<<<<<<");
 }
