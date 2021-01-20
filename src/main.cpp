@@ -24,11 +24,12 @@ const int debounceDelay = update_every;
 
 // int step = 0;
 
-LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3,
-                      POSITIVE);  // Set the LCD I2C address
+LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
+
+const int stepsPerRevolution = 2038;
 
 // const int stepsPerRevolution = 200;
-const int stepsPerRevolution = 2038;
+// const int stepsPerRevolution = 768;
 // const int stepsPerRevolution = 2048;
 // const int stepsPerRevolution = 768;
 // const int stepsPerRevolution = 4095;
@@ -115,11 +116,11 @@ void loop() {
   } else {
     if (cw) {
       lcd.print(">>>>>>");
-      myStepper.step(stepsPerRevolution / 100);
+      myStepper.step(100);
       // lcd.print("Direction >>>>>>");
     } else {
       lcd.print("<<<<<<");
-      myStepper.step(stepsPerRevolution / -100);
+      myStepper.step(-100);
       // lcd.print("Direction <<<<<<");
     }
     // }
